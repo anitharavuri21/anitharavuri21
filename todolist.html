@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="list.css">
+    <script src="https://kit.fontawesome.com/2427ea53eb.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+      $(document).ready(function() {
+        $(".txtb").on("keyup",function(e){
+          if(e.keyCode == 13 && $(".txtb").val() != "" ){
+          var x = $("<div class='task'></div>").text($(".txtb").val());
+          var del=$("<i class='fas fa-trash-alt'></i>").click(function(){
+            var p=$(this).parent();
+            p.fadeOut(function(){
+              p.remove();
+            });
+          });
+          var check=$("<i class='fas fa-check'></i>").click(function(){
+            var p=$(this).parent();
+            p.fadeOut(function(){
+              $(".comp").append(p);
+              p.show();
+            });
+            $(this).remove();
+          });
+          x.append(del,check);
+          $(".notcomp").append(x);
+          
+          $(".txtb").val("");
+          }
+        });
+      });
+    </script>
+
+</head>
+<body>
+   <div class="container">
+     <div class="input-text">
+       <p id="a2"></p>
+    <input type="text" class="txtb"placeholder="type...">
+    
+    </div>
+    <div class="notcomp">
+      <p>Tasks not completed</p>
+     
+    
+    </div>
+       
+      <div class="comp">
+      <p>completed tasks</p>
+      
+    </div>
+     
+   </div>
+</body>
+</html>
